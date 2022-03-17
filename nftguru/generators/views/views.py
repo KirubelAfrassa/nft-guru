@@ -3,8 +3,8 @@ from rest_framework import generics, status
 from rest_framework.parsers import JSONParser, MultiPartParser
 from rest_framework.response import Response
 
-from .api.serializers import ImageSerializer, LayerSerializer
-from .models import Image, Layer
+from ..api.serializers import ImageSerializer, LayerSerializer
+from ..models import Image, Layer
 
 
 class LayerImageList(generics.ListCreateAPIView):
