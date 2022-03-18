@@ -12,7 +12,9 @@ sys.path.insert(0, UTIL_PATH)
 
 from ...utils.simple_image_merger import merge
 
-MEDIA_ROOT = str(Path(__file__).resolve(strict=True).parent.parent.parent / "media")
+path = Path(__file__).resolve(strict=True).parent.parent.parent / "media"
+path.mkdir(parents=True, exist_ok=True)
+MEDIA_ROOT = str(path)
 
 
 class Preview(views.APIView):

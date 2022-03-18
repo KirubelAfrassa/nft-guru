@@ -3,15 +3,19 @@ from pathlib import Path
 
 from PIL import Image
 
-MEDIA_ROOT = str(
-    Path(__file__).resolve(strict=True).parent.parent.parent / "nftguru" / "media"
-)
+
+def createMedia():
+    path = Path(__file__).resolve(strict=True).parent.parent / "media"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
 
 def merge(files):
+    MEDIA_ROOT = str(createMedia())
 
+    background = None
     j = 0
-    while j < len(files):
+    while len(files) > 1 and j < len(files):
         fileName = str(files[j])
         if j == 0:
             background = Image.open(files[j])
@@ -30,6 +34,7 @@ def merge(files):
         offset = ((bg_w - fg_w) // 2, (bg_h - fg_h) // 2)
         background.paste(foreground, offset, foreground)
 
-    background.save(os.path.join(MEDIA_ROOT, "merged.webp"))
+    if background is not None:
+        background.save(os.path.join(MEDIA_ROOT, "merged.webp"))
 
     return background
