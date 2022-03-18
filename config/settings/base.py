@@ -327,3 +327,10 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+APPEND_SLASH = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://www.nftguru.services",
+]
+SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
